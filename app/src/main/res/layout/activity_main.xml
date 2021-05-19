@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity">
+
+    <TextView
+        android:id="@+id/textview_nataliasbank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Natalia's Bank"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/edittext_idenficator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="identificator"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_enter"
+        app:layout_constraintLeft_toLeftOf="@id/textview_nataliasbank"
+        app:layout_constraintRight_toRightOf="@id/textview_nataliasbank"
+        app:layout_constraintTop_toBottomOf="@+id/textview_nataliasbank"
+        android:inputType="number">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintLeft_toLeftOf="@id/edittext_idenficator"
+        app:layout_constraintRight_toRightOf="@id/edittext_idenficator">
+
+    </Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

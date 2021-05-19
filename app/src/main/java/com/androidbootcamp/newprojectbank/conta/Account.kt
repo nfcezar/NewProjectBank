@@ -1,6 +1,6 @@
 package com.androidbootcamp.newprojectbank.conta
 
-class Account(val name: String, var balance: Float) {
+abstract class Account(val name: String, var balance: Float, val identifier: String) {
 
     fun deposit(amount: Float, paymentVoucher: Boolean = true) {
         val canIDeposit = amount > 0
@@ -33,7 +33,13 @@ class Account(val name: String, var balance: Float) {
             accountDest.deposit(amount, false)
         }
         val messageStatus = if (canITransfer) "Success" else "Failed"
-        paymentVoucher(paymentVoucher, OperationType.TRANSFER, amount,messageStatus)
+        paymentVoucher(
+            paymentVoucher,
+            OperationType.TRANSFER,
+            amount,
+            messageStatus,
+            accountDest.identifier, accountDest.name
+        )
     }
 
     fun balancePrint(account: Account) {
@@ -49,7 +55,7 @@ class Account(val name: String, var balance: Float) {
     private fun paymentVoucher(
         paymentVoucher: Boolean,
         operationType: OperationType,
-        value: Float, messageStatus: String = ""
+        value: Float, messageStatus: String = "", identifier: String = "", name: String = ""
     ) {
         if (paymentVoucher) {
             when (operationType) {
@@ -60,15 +66,15 @@ class Account(val name: String, var balance: Float) {
                 OperationType.DEPOSIT
                 -> println("${messageStatus}: deposit operations finished! Value of: $value")
                 OperationType.TRANSFER
-                -> println("${messageStatus}: transfer operations finished. Value of: $value")
+                -> println("${messageStatus}: transfer operations finished to $name account, id: $identifier. Value of: $value")
                 OperationType.ZERO_BALANCE
-                -> println("Your balance is empty. Value of: $value")
+                -> println("Balance is empty. Value of: $value")
             }
         }
     }
+    companion object {
+        fun imprimeNomeBanco() {
+            println("Santander")
+        }
+    }
 }
-
-
-/*if (paymentVoucher) {
-            val messageStatus = if (canIDeposit) "Success" else "Failed"
-            println("${messageStatus}: deposit operations finished!")*/
